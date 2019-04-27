@@ -1,0 +1,39 @@
+.Ready{
+	display:none;
+	position:absolute;
+}
+.DarkCover{
+	width:100vw;
+	height:100vh;
+	position:fixed;
+	color:black;
+	opacity:0.7;
+}
+.TreeWindow{
+	position:fixed;
+	top:10vh;
+	bottom:10vh;
+	right:16vw;
+	left:16vw;
+	background:white;
+	box-shadow:0 0 10px #808080;
+	-webkit-box-shadow:0 0 10px #808080;
+	padding:1em;
+	font-size:1.2em;
+}
+.TreeWindow ul,.TreeWindow li{
+	list-style-type:none;
+}
+.TreeWindow h2{
+	text-align:center;
+}
+.DarkCover,.TreeWindow{
+	transition:all 1s;
+	z-index:99999;
+}
+.CloseDirectoryWindow{
+	font-size:1.5em;
+	border:none;
+    background:white;
+	float:right;
+}
