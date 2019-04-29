@@ -140,6 +140,7 @@ CREATE TABLE `typecho_users` (
   `password` varchar(64) default NULL,
   `mail` varchar(150) default NULL,
   `url` varchar(150) default NULL,
+  `intro` text NOT NULL,
   `screenName` varchar(32) default NULL,
   `created` int(10) unsigned default '0',
   `activated` int(10) unsigned default '0',
