@@ -58,6 +58,11 @@ class Widget_Users_Profile extends Widget_Users_Edit implements Widget_Interface
         $mail = new Typecho_Widget_Helper_Form_Element_Text('mail', NULL, NULL, _t('电子邮箱地址 *'), _t('电子邮箱地址将作为此用户的主要联系方式.')
             . '<br />' . _t('请不要与系统中现有的电子邮箱地址重复.'));
         $form->addInput($mail);
+        
+        /** 个人简介 */
+        $intro = new Typecho_Widget_Helper_Form_Element_Textarea('intro', NULL, NULL, _t('个人简介'), _t('个人简介作为此用户对于自己的简单介绍.')
+            . '<br />' . _t('字数请不要太多，适中即可.'));
+        $form->addInput($intro);
 
         /** 用户动作 */
         $do = new Typecho_Widget_Helper_Form_Element_Hidden('do', NULL, 'profile');
@@ -71,6 +76,7 @@ class Widget_Users_Profile extends Widget_Users_Edit implements Widget_Interface
         $screenName->value($this->user->screenName);
         $url->value($this->user->url);
         $mail->value($this->user->mail);
+        $intro->value($this->user->intro);
 
         /** 给表单增加规则 */
         $screenName->addRule(array($this, 'screenNameExists'), _t('昵称已经存在'));
@@ -263,7 +269,7 @@ class Widget_Users_Profile extends Widget_Users_Edit implements Widget_Interface
         }
 
         /** 取出数据 */
-        $user = $this->request->from('mail', 'screenName', 'url');
+        $user = $this->request->from('mail', 'screenName', 'url', 'intro');
         $user['screenName'] = empty($user['screenName']) ? $user['name'] : $user['screenName'];
 
         /** 更新数据 */
